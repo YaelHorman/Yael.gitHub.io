@@ -1,234 +1,480 @@
+
 /*
-    I use cyan as the main colour because I personally like this colour
-    and it makes the page feel fresh and comfortable. I wanted to keep
-    the website simple, so I mainly used layout and colour techniques
-    taught in class.
+  I chose a dark colour palette to create a cinematic atmosphere 
+  inspired by early cinemas. White and grey are used for most text, 
+  while cyan is used as an accent to highlight important interactive
+   elements.
 */
-
-* {
-    box-sizing: border-box;
+:root {
+  --background-color: #080a0c;
+  --text-color: #e8e8e8;
+  --secondary-color: #777d82;
+  --line-color: #303438;
+  --accent-color: #00f0ff;
 }
 
-html {
-    scroll-behavior: smooth;
+
+
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
 }
+
+
+
 
 body {
-    margin: 1rem;
-    background-color: #eefafa;
-    color: #123b40;
-    font-family: Sans-serif;
-    font-size: 1.25rem;
-    line-height: 2;
-}
+  font-family: Arial, sans-serif;
 
-/*
-    For most spacing and layout values, I use rem because I'm more
-     accustomed to adjusting with rem（I dislike input large values）
-*/
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
 
 
 
 
 header {
-    min-height: 100vh;
-    padding: 2rem;
+  width: 100%;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  padding: 24px 36px;
 
-    overflow: hidden;
+  box-sizing: border-box;
+
+  background-color: #11181c;
+
+  border-bottom: 1px solid var(--line-color);
 }
 
-header p {
-    margin: 0;
-    max-width: 35rem;
-    letter-spacing: 0.08em;
-}
 
 header h1 {
-    margin: 0;
+  font-size: 42px;
 
-    font-size: 12rem;
-    line-height: 0.75;
-    letter-spacing: -0.06em;
+  font-weight: 400;
 
-    color: #0b777d;
+  letter-spacing: 0.16em;
 
-    transition:
-        transform 0.5s ease,
-        color 0.5s ease;
+  color: var(--text-color);
+}
+
+
+
+
+.container {
+  width: 100%;
+  flex: 1;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px 36px;
+
+  box-sizing: border-box;
 }
 
 
 /*
-     The hover interaction gives the title a small response to the user's cursor. 
-     I kept this movement subtle so that it supports the research concept of
-      interaction without distracting from the content.
-     AI acknowledgement:
-    I used ChatGPT to learn how to create a simple mouse-hover interaction
-    using :hover, transform and transition. I then adjusted the scale and
-    colour myself to fit my own design.
+  The large frame creates a clear boundary around the archive and 
+  gives the website an exhibition-like feeling.
 */
 
+.archive-frame {
+  width: 90%;
+  height: 72vh;
 
+  border: 1px solid var(--line-color);
 
-header h1:hover {
-    transform: scale(1.05);
-    color: #00aeb5;
+  display: grid;
+
+  grid-template-columns: 2.2fr 1fr;
+
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(0, 240, 255, 0.035),
+      transparent 40%
+    );
 }
 
 
 
-main {
-    width: 90%;
-    max-width: 70rem;
-    margin: 0 auto;
+
+.archive-left {
+  padding: 34px;
+
+  border-right: 1px solid var(--line-color);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+
+
+
+.media-player {
+  width: 100%;
+}
+
+
+.media-player video {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  object-fit: contain;
+
+  background-color: #000;
+
+  border: 1px solid var(--line-color);
+
+  box-shadow:
+    0 0 50px rgba(0, 240, 255, 0.04);
+}
+
+
+
+.custom-controls {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-top: 14px;
+
+  width: 100%;
+}
+
+
+
+.custom-controls button {
+  background: none;
+
+  border: none;
+
+  padding: 0;
+
+  color: var(--text-color);
+
+  cursor: pointer;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: 0.15em;
+
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+
+.custom-controls button:hover {
+  color: var(--accent-color);
+}
+
+
+
+.progress-bar {
+  flex: 1;
+
+  height: 2px;
+
+  background-color: var(--line-color);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+
+.progress-bar span {
+  display: block;
+
+  height: 100%;
+
+  width: 0;
+
+  background-color: var(--accent-color);
+
+  box-shadow:
+    0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+
+
+
+.artwork-list {
+  width: 100%;
+
+  margin-top: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+
+.artwork-list button {
+  width: 100%;
+
+  padding: 7px 0;
+
+  background: none;
+
+  border: none;
+
+  color: var(--secondary-color);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: 0.1em;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 
 /*
-    The main content is limited to 70rem so that paragraphs do not become
-    excessively wide on large screens. A width of 90% allows the layout
-    to remain flexible on smaller screens while margin: 0 auto centres
-    the content horizontally.
+  The artwork titles move slightly when the user hovers over them. 
+  I adapted this technique from my Assessment 1 to give visual 
+  feedback and make the clickable artwork list easier to recognise.
 */
+.artwork-list button:hover {
+  color: var(--text-color);
 
-
-
-section {
-    min-height: 80vh;
-
-    margin: 4rem 0;
-    padding: 6rem 5rem;
-
-    background-color: #d9f4f3;
-
-    border: 1px solid #9bd9d9;
-    border-radius: 2rem;
-
-    transition:
-        background-color 0.5s ease,
-        color 0.5s ease,
-        border-color 0.5s ease,
-        transform 0.5s ease;
-}
-
-
-/*
-    I organised the thirteen prompts into five larger thematic sections.
-    The rounded cyan panels create clear visual boundaries between these
-    themes while allowing the research to read as a continuous experience.
-    The large padding creates visual space around the text.
-*/
-
-
-
-section:hover {
-    background-color: #08777d;
-    color: #eefafa;
-    border-color: #08777d;
-
-    transform: translateY(-0.5rem);
-}
-
-/*
-    The hover interaction provides a visual cue that the sections are
-    interactive. The colour change is the most important part of this
-    interaction, while the slight upward movement adds a subtle sense of
-    depth.
-*/
-
-
-section h2 {
-    max-width: 50rem;
-
-    margin: 1rem 0 3rem;
-
-    font-size: 2rem;
-    line-height: 1;
-    letter-spacing: -0.03em;
-
-    transition:
-        color 0.5s ease,
-        transform 0.5s ease;
-}
-
-section:hover h2 {
-    transform: translateX(1rem);
+  transform: translateX(10px);
 }
 
 
 
 
-section > p:first-child {
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+.archive-right {
+  padding: 40px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  box-sizing: border-box;
 }
 
 
 
+#artwork-number {
+  font-size: 11px;
 
+  letter-spacing: 0.16em;
 
-section p {
-    max-width: 42rem;
+  color: var(--accent-color);
 }
 
 
-/*
-    Limiting paragraph width improves readability by preventing individual
-    lines from becoming too long. The large section itself therefore acts
-    as a visual container, while the text remains at a comfortable reading
-    width.
-*/
+
+.artwork-main-info {
+  margin-top: 80px;
+}
+
+
+
+#artwork-title {
+  font-size: 34px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.08em;
+}
+
+
+
+.artwork-category {
+  margin-top: 10px;
+
+  font-size: 10px;
+
+  letter-spacing: 0.14em;
+
+  color: var(--secondary-color);
+}
+
+
+
+.artwork-description {
+  max-width: 280px;
+
+  margin-top: 50px;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  color: var(--secondary-color);
+}
+
+
+
+.artwork-meta {
+  padding-top: 15px;
+
+  border-top: 1px solid var(--line-color);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+
+.artwork-meta p {
+  font-size: 10px;
+
+  letter-spacing: 0.15em;
+
+  color: var(--secondary-color);
+}
 
 
 
 footer {
-    padding: 2rem;
-    min-height: 10vh;
-    margin: 0;
-    background-color: #479693;
-   
+  width: 100%;
+
+  height: 20px;
+
+  box-sizing: border-box;
 }
 
+
+
+/*
+  The responsive rules adjust the proportions and spacing for smaller
+  screens. On very narrow screens, the two columns become one 
+  column so that the video and artwork information can still be 
+  viewed clearly.
+*/
+@media (max-width: 900px) {
+
+  .archive-frame {
+    width: 95%;
+
+    grid-template-columns: 1.7fr 1fr;
+  }
+
+
+  .archive-left {
+    padding: 24px;
+  }
+
+
+  .archive-right {
+    padding: 28px;
+  }
+
+
+  .artwork-main-info {
+    margin-top: 50px;
+  }
+
+
+  #artwork-title {
+    font-size: 26px;
+  }
+
+}
 
 
 
 @media (max-width: 700px) {
 
-    header {
-        padding: 1.5rem;
-    }
+  header {
+    padding: 20px;
+  }
 
-    header h1 {
-        font-size: 6rem;
-    }
 
-    main {
-        width: 90%;
-    }
+  header h1 {
+    font-size: 28px;
+  }
 
-    section {
-        min-height: auto;
 
-        margin: 2rem 0;
-        padding: 4rem 2rem;
+  .container {
+    padding: 15px;
+  }
 
-        border-radius: 1.5rem;
-    }
 
-    section h2 {
-        font-size: 2.5rem;
-    }
+  .archive-frame {
+    width: 100%;
+
+    height: 75vh;
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .archive-left {
+    border-right: none;
+
+    border-bottom: 1px solid var(--line-color);
+
+    padding: 20px;
+  }
+
+
+  .archive-right {
+    padding: 20px;
+  }
+
+
+  .artwork-main-info {
+    margin-top: 20px;
+  }
+
+
+  #artwork-title {
+    font-size: 22px;
+  }
+
+
+  .artwork-description {
+    margin-top: 20px;
+  }
+
 }
-
-/*
-    AI acknowledgement:
-    I used ChatGPT to check the final HTML and CSS structure for basic
-    errors and to confirm that the linked stylesheet and interactions
-    could run correctly. I reviewed the suggestions myself and made
-    the final changes to the code.
-*/
